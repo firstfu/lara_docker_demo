@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+
+  app:
+    build:
+      args:
+        user: firstfu
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    container_name: app
+    restart: unless-stopped
+    ports:
+        - 8210:8000
+    env_file:
+      - .env.production
+    volumes:
+        - ./:/var/www
+        # - /app/vendor
+        # - /app/node_modules
+
+  db:
+    image: mysql:latest
+    container_name: db
+    restart: unless-stopped
+    environment:
+    #   MYSQL_DATABASE: ${DB_DATABASE}
+    #   MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    #   MYSQL_PASSWORD: ${DB_PASSWORD}
+    #   MYSQL_USER: ${DB_USERNAME}
+        MYSQL_DATABASE: travellist
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_PASSWORD: password
+        MYSQL_USER: travellist_user
+    command:
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+      - "--default-authentication-plugin=mysql_native_password"
+      - "--event_scheduler=ON"
+    volumes:
+      - ./docker-compose/mysql/init:/docker-entrypoint-initdb.d
+      - ./docker-compose/mysql/data:/var/lib/mysql
+      - ./docker-compose/mysql/backup:/backup
+    ports:
+      - 3366:3306
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/

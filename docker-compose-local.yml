@@ -13,6 +13,8 @@ services:
     restart: unless-stopped
     ports:
         - 8210:8000
+    env_file:
+      - .env
     volumes:
         - ./:/var/www
         # - /app/vendor
@@ -47,6 +49,8 @@ services:
     image: nginx:alpine
     container_name: nginx
     restart: unless-stopped
+    env_file:
+      - .env
     ports:
       - 8000:80
     volumes:

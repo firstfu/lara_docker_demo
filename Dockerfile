@@ -31,7 +31,6 @@ RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
 
-
 USER $user
 
 # Set working directory(設置工作目錄)

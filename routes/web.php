@@ -19,5 +19,6 @@ Route::get('/', function () {
 
 
 Route::get('/test', function () {
-    return 'ok...';
+    // return '測試開發';
+    return env('APP_TYPE');
 });
