@@ -24,16 +24,22 @@ RUN apt-get update && apt-get install -y \
 # Clear cache(清除緩存)
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions(安裝PHP擴展)
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# # Install PHP extensions(安裝PHP擴展)
+# RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# # Get latest Composer(獲取最新的Composer)
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user to run Composer and Artisan Commands(創建系統用戶以運行Composer和Artisan命令)
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+# # Create system user to run Composer and Artisan Commands(創建系統用戶以運行Composer和Artisan命令)
+# RUN useradd -G www-data,root -u $uid -d /home/$user $user
+# RUN mkdir -p /home/$user/.composer && \
+#     chown -R $user:$user /home/$user
 
 
-USER $user
+# USER $user
+
+
+# 安裝composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# RUN composer install
