@@ -19,23 +19,22 @@ services:
         - ./:/var/www
         # - /app/vendor
         # - /app/node_modules
+    command: bash -c "php artisan serve --host=0.0.0.0 --port=8000"
 
   db:
     image: mysql:latest
     container_name: db
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
-    #   MYSQL_DATABASE: ${DB_DATABASE}
-    #   MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-    #   MYSQL_PASSWORD: ${DB_PASSWORD}
-    #   MYSQL_USER: ${DB_USERNAME}
-        MYSQL_DATABASE: travellist
-        MYSQL_ROOT_PASSWORD: password
-        MYSQL_PASSWORD: password
-        MYSQL_USER: travellist_user
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
     command:
       - "--character-set-server=utf8mb4"
-      - "--collation-server=utf8mb4_unicode_ci"
+      - "--collation-server=utf8mb4_general_ci"
       - "--default-authentication-plugin=mysql_native_password"
       - "--event_scheduler=ON"
     volumes:
