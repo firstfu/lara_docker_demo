@@ -11,15 +11,12 @@ services:
       dockerfile: Dockerfile
     container_name: app
     restart: unless-stopped
-    # ports:
-    #   - 8000:8000
+    ports:
+        - 8210:8000
     volumes:
-        - ./:/app
-        # TODO: 未完成
+        - ./:/var/www
         # - /app/vendor
         # - /app/node_modules
-    # depends_on:
-    #     - db
 
   db:
     image: mysql:latest
