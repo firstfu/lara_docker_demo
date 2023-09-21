@@ -57,6 +57,7 @@ RUN composer install
 #     --no-dev \
 #     --prefer-dist
 # RUN composer dump-autoload
+# RUN php artisan migrate
 
 # Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
