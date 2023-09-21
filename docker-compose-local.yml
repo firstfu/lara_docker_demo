@@ -9,6 +9,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
+    image: larademo
     container_name: app
     restart: unless-stopped
     tty: true
@@ -19,6 +20,17 @@ services:
     volumes:
         - ./:/var/www
     # command: bash -c "php artisan serve --host=0.0.0.0 --port=8000"
+
+  laraqueue:
+        image: larademo
+        container_name: laraqueue
+        restart: always
+        working_dir: /var/www/
+        command: php artisan queue:work
+        depends_on:
+            - app
+        volumes:
+            - ./:/var/www
 
   db:
     image: mysql:latest
