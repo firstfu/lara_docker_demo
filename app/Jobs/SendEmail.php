@@ -17,15 +17,15 @@ class SendEmail implements ShouldQueue
 
 
 
-    protected $email;
+    protected $data;
 
 
     /**
      * Create a new job instance.
      */
-    public function __construct($mail)
+    public function __construct($data)
     {
-        $this->email = $mail;
+        $this->data = $data;
     }
 
     /**
@@ -34,7 +34,7 @@ class SendEmail implements ShouldQueue
     public function handle(): void
     {
         try {
-            dump('send email demo...');
+            dump($this->data);
         }
         catch (\Throwable $th) {
             //throw $th;

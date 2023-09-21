@@ -9,6 +9,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
+    image: larademo
     container_name: app
     restart: unless-stopped
     tty: true
@@ -16,6 +17,17 @@ services:
         - 8210:8000
     env_file:
       - .env.production
+    volumes:
+        - ./:/var/www
+
+  laraqueue:
+    image: larademo
+    container_name: laraqueue
+    restart: always
+    working_dir: /var/www/
+    command: php artisan queue:work
+    depends_on:
+        - app
     volumes:
         - ./:/var/www
 

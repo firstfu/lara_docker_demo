@@ -21,7 +21,16 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
 
-    dispatch(new SendEmail('fff@gmail.com'));
+
+    $arr = [
+        'name' => 'x1',
+        'addr' => [
+            'city'   => 'taipei',
+            'zip'    => '100',
+            'street' => 'aaa'
+        ]
+    ];
+    dispatch(new SendEmail($arr));
 
 
     // return '測試開發';
