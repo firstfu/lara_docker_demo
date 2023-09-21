@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\SendEmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,10 @@ Route::get('/', function () {
 
 
 Route::get('/test', function () {
+
+    dispatch(new SendEmail('fff@gmail.com'));
+
+
     // return '測試開發';
     return env('APP_TYPE');
 });
