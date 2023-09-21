@@ -59,14 +59,14 @@ services:
   #   ports:
   #     - 3366:3306
 
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    restart: unless-stopped
-    env_file:
-      - .env
-    ports:
-      - 8000:80
-    volumes:
-      - ./:/var/www
-      - ./docker-compose/nginx:/etc/nginx/conf.d/
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   restart: unless-stopped
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 8000:80
+  #   volumes:
+  #     - ./:/var/www
+  #     - ./docker-compose/nginx:/etc/nginx/conf.d/
