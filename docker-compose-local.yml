@@ -9,7 +9,6 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: larademo
     container_name: app
     restart: unless-stopped
     tty: true
@@ -17,13 +16,14 @@ services:
         - 8210:8000
     env_file:
       - .env
+    depends_on:
+        - db
     volumes:
         - ./:/var/www
         - /var/www/vendor
     # command: bash -c "php artisan serve --host=0.0.0.0 --port=8000"
 
   laraqueue:
-    # image: larademo
     build:
       args:
         user: root
@@ -32,10 +32,10 @@ services:
       dockerfile: Dockerfile.queue
     container_name: laraqueue
     restart: always
-    working_dir: /var/www/
-    # command: php artisan queue:work
+    command: php artisan queue:work
     depends_on:
         - app
+        - db
     volumes:
         - ./:/var/www
         - /var/www/vendor
@@ -47,14 +47,14 @@ services:
     env_file:
       - .env
     environment:
-      # MYSQL_DATABASE: ${DB_DATABASE}
-      # MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      # MYSQL_PASSWORD: ${DB_PASSWORD}
-      # MYSQL_USER: ${DB_USERNAME}
-      MYSQL_DATABASE: demo
-      MYSQL_ROOT_PASSWORD: demo
-      MYSQL_PASSWORD: demo
-      MYSQL_USER: demo
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      # MYSQL_DATABASE: demo
+      # MYSQL_ROOT_PASSWORD: demo
+      # MYSQL_PASSWORD: demo
+      # MYSQL_USER: demo
     command:
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_general_ci"

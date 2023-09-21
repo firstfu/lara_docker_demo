@@ -58,4 +58,6 @@ RUN composer install
 #     --prefer-dist
 # RUN composer dump-autoload
 
+# RUN php artisan queue:work
+
 
