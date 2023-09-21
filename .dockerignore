@@ -10,5 +10,5 @@ docker-compose*
 .vscode
 
 # TODO: 未完成
-**/vendor
+# **/vendor
 **/node_modules

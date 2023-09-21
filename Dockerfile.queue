@@ -43,11 +43,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY . /var/www
 
 
-
 # Assign permissions of the working directory to the www-data user
 RUN chown -R www-data:www-data \
     /var/www/storage \
     /var/www/bootstrap/cache
+
 
 RUN composer install
 # RUN composer install \
@@ -58,6 +58,4 @@ RUN composer install
 #     --prefer-dist
 # RUN composer dump-autoload
 
-# Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
-EXPOSE 9000
-CMD ["php-fpm"]
+
