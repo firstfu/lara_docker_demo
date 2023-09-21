@@ -51,10 +51,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
-      # MYSQL_DATABASE: demo
-      # MYSQL_ROOT_PASSWORD: demo
-      # MYSQL_PASSWORD: demo
-      # MYSQL_USER: demo
     command:
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_general_ci"
