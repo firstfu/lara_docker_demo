@@ -1,23 +1,42 @@
-/.phpunit.cache
 /node_modules
-/public/build
+/public/.htaccess
+/public/cache
 /public/hot
 /public/storage
+/public/upload/avatar
+/public/build/beike/*
+/public/install/css/*
+/public/sitemap.xml
 /storage/*.key
+/storage/installed
 /vendor
+Envoy.blade.php
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+mix-manifest.json
+package-lock.json
+dist
+/beike/ShopAPI
+
+/.phpunit.cache
+/public/build
 # .env
 # .env.backup
 # .env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
 auth.json
-npm-debug.log
-yarn-error.log
 /.fleet
-/.idea
-/.vscode
 
 # myqsl
-/docker-compose/mysql/data
-/docker-compose/mysql/backup
+docker-compose/mysql/data/**
+docker-compose/mysql/data
+docker-compose/mysql/backup
+docker-compose/mysql/backup/**
+
+# except for .gitkeep
+!.gitkeep

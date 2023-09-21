@@ -1,39 +1,54 @@
 FROM php:8.2-fpm
 
 
-# Arguments defined in docker-compose.yml(在docker-compose.yml中定義的參數)
-ARG user
-ARG uid
+WORKDIR /var/www
+
+
+# Copy composer.lock and composer.json into the working directory
+COPY composer.lock composer.json /var/www/
 
 # Install system dependencies(安裝系統依賴)
 RUN apt-get update && apt-get install -y \
-    git \
-    curl \
+    build-essential \
     libpng-dev \
-    libonig-dev \
-    libxml2-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
     zip \
-    unzip
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    libzip-dev \
+    unzip \
+    git \
+    libonig-dev \
+    curl \
+    libicu-dev
 
 
 # Clear cache(清除緩存)
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# # Install PHP extensions(安裝PHP擴展)
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+# Install PHP extensions(安裝PHP擴展)
+RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install gd
+RUN docker-php-ext-install bcmath
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install intl
 
 # # Get latest Composer(獲取最新的Composer)
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# # Create system user to run Composer and Artisan Commands(創建系統用戶以運行Composer和Artisan命令)
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+# Copy existing application directory contents to the working directory
+COPY . /var/www
 
+# RUN composer install --no-interaction
 
-USER $user
+# Assign permissions of the working directory to the www-data user
+RUN chown -R www-data:www-data \
+    /var/www/storage \
+    /var/www/bootstrap/cache
 
-# Set working directory(設置工作目錄)
-WORKDIR /var/www
-
-
+# Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
+EXPOSE 9000
+CMD ["php-fpm"]
