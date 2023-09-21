@@ -22,7 +22,8 @@ services:
     # command: bash -c "php artisan serve --host=0.0.0.0 --port=8000"
 
   laraqueue:
-    image: larademo
+    # image: larademo
+    image: php:8.2-fpm
     container_name: laraqueue
     restart: always
     working_dir: /var/www/
