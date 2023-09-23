@@ -1,41 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    @vite('resources/css/app.css')
+    @vite(['resources/js/app.js'])
 </head>
 
-
-
 <body>
-    <div class="container containerSection">
-        <div class="row my-4">
-            {{-- <div class="col-md-4 mx-auto">
-                <div class="btn btn-danger">
-                    測試
-                </div>
-            </div> --}}
 
-            <div class="col">欄1</div>
-            <div class="col">欄2</div>
+    <div class="text-center mt-4 "></div>
+
+    <div class="container">
+        <div class="flex flex-row  mt-2 h-screen">
+            <div class="flex-col w-32 bg-yellow-100">品牌故事</div>
+            <div class="flex-col w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cumque
+                laudantium
+                explicabo, eum odit
+                voluptates temporibus totam tenetur soluta, iusto inventore maxime cum provident ipsum asperiores
+                quaerat nemo quisquam repellendus.</div>
         </div>
     </div>
-
-
-
-
-    @vite(['resources/js/app.js'])
-
-    <style>
-        .containerSection {
-            background-color: #BBB3B3;
-        }
-    </style>
-
-
 </body>
 
 </html>
