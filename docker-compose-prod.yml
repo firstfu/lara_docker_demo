@@ -73,8 +73,8 @@ services:
       - .env.production
     ports:
       # - 9032:80
-      # - 8000:80
-      - 80:80
+      - 8000:80
+      # - 80:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
