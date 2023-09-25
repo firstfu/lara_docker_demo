@@ -36,6 +36,8 @@ services:
     depends_on:
         - app
         - db
+    env_file:
+      - .env
     volumes:
         - ./:/var/www
         - /var/www/vendor
