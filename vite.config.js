@@ -14,7 +14,7 @@ export default defineConfig({
         port: "5178",
         // 這上這個配置，才可以在外部訪問server上的css和js+hmr
         hmr: {
-            host: " 159.223.74.248",
+            host: "159.223.74.248",
         },
     },
     resolve: {
