@@ -9,6 +9,4 @@ docker-compose*
 .gitignore
 .vscode
 
-# TODO: 未完成
-# **/vendor
 **/node_modules
