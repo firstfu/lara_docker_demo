@@ -12,6 +12,11 @@ export default defineConfig({
     server: {
         host: "0.0.0.0",
         port: "5178",
+        hmr: {
+            // host: "0.0.0.0",
+            host: "159.223.74.248",
+            port: "5178",
+        },
     },
     resolve: {
         alias: {
