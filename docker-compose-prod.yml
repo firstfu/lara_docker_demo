@@ -72,7 +72,8 @@ services:
     env_file:
       - .env.production
     ports:
-      - 8000:80
+      - 9032:80
+      # - 8000:80
       # - 80:80
     volumes:
       - ./:/var/www
