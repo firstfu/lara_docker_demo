@@ -1,0 +1,17 @@
+FROM node:latest
+
+# RUN apt-get update -y && apt-get upgrade -y
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY . /app
+
+
+# Set the user to use when running this image
+#USER node
+
+RUN npm install -g @quasar/cli
+
+RUN npm install
+

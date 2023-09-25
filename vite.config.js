@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import path from "path";
 
-console.log(process.env?.APP_NAME);
+let host = process.env?.ENV == "local" ? "127.0.0.1" : "159.223.74.248";
 
 export default defineConfig({
     plugins: [
@@ -15,7 +15,7 @@ export default defineConfig({
         host: "0.0.0.0",
         port: "5178",
         hmr: {
-            host: "159.223.74.248",
+            host,
             port: "5178",
         },
     },
