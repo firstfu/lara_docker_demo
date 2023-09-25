@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="flex flex-row  mt-2 h-screen">
-            <div class="flex-col w-32 bg-yellow-100">品牌故事</div>
+            <div class="flex-col w-32 bg-yellow-300">品牌故事</div>
             <div class="flex-col w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cumque
                 測試Demo.</div>
         </div>
