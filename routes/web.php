@@ -20,8 +20,10 @@ Route::get('/', function () {
 
 
 
+/**
+ * 隊列測試
+ */
 Route::get('/test', function () {
-
 
     $arr = [
         'name' => 'x1',
@@ -36,4 +38,15 @@ Route::get('/test', function () {
 
     // return '測試開發';
     return env('APP_TYPE');
+});
+
+
+// 首頁的路由
+Route::get('/homepage', function () {
+    return view('homepage');
+});
+
+
+Route::get('/detail', function () {
+    return view('posts.detail');
 });
