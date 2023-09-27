@@ -1,6 +1,7 @@
 <?php
 
 use App\Jobs\SendEmail;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,7 +44,8 @@ Route::get('/test', function () {
 
 // 首頁的路由
 Route::get('/homepage', function () {
-    return view('homepage');
+    $blogs = Blog::query()->latest()->take(3)->get();
+    return view('homepage', ['blogs' => $blogs]);
 });
 
 
