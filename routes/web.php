@@ -4,6 +4,9 @@ use App\Jobs\SendEmail;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AjaxDemoController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +55,7 @@ Route::get('/homepage', function () {
 Route::get('/detail', function () {
     return view('posts.detail');
 });
+
+
+
+Route::get('/ajaxDemo', [AjaxDemoController::class, 'index']);
