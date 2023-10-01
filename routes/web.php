@@ -52,8 +52,9 @@ Route::get('/homepage', function () {
 });
 
 
-Route::get('/detail', function () {
-    return view('posts.detail');
+Route::get('/blogs/{id}', function ($id) {
+    $blog = Blog::query()->findOrFail($id);
+    return view('posts.detail', ['blog' => $blog]);
 });
 
 
