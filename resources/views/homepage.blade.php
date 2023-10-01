@@ -2,13 +2,13 @@
 
 
 @section('content')
-    @dd($blogs->toArray()));
+    {{-- @dd($blogs->toArray())); --}}
     <!-- Banner -->
     <!--
-                                                       Note: To show a background image, set the "data-bg" attribute below
-                                                       to the full filename of your image. This is used in each section to set
-                                                       the background image.
-                                                      -->
+                                                                   Note: To show a background image, set the "data-bg" attribute below
+                                                                   to the full filename of your image. This is used in each section to set
+                                                                   the background image.
+                                                                  -->
     <section id="banner" class="bg-img" data-bg="banner.jpg">
         <div class="inner">
             <header>
