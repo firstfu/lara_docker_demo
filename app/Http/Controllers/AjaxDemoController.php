@@ -18,11 +18,6 @@ class AjaxDemoController extends Controller
             return response()->json(['msg' => 'This is a simple message.']);
         }
 
-
-
-
-
-
         return view('demo.demo1');
     }
 
