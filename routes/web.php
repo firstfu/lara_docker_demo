@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Jobs\SendEmail;
 use App\Models\Blog;
 use App\Models\User;
@@ -26,9 +27,6 @@ Route::get('/', function () {
 
 // ==============隊列測試=============
 
-/**
- * 隊列測試
- */
 Route::get('/test', function () {
 
     $arr = [
@@ -61,9 +59,7 @@ Route::get('/user/register', function () {
 
 // 登入
 Route::get('/user/login', function () {
-
     // $rs = Auth::attempt(['email' => 'test@gmail.com', 'password' => '123456']);
-
     if (Auth::check()) {
         return '已經登入';
     }
@@ -80,7 +76,6 @@ Route::get('/user/getUser', function () {
 
 // ajaxUserDemo
 Route::any('/user/ajaxUserDemo', function (Request $request) {
-
 
     // dd(request()->cookie());
 
@@ -103,20 +98,12 @@ Route::any('/user/ajaxUserDemo', function (Request $request) {
 
 
 
-
 // ==============博客測試=============
 
-// 首頁的路由
-Route::get('/homepage', function () {
-    $blogs = Blog::query()->latest()->take(3)->get();
-    return view('homepage', ['blogs' => $blogs]);
-});
-
-
-Route::get('/blogs/{id}', function ($id) {
-    $blog = Blog::query()->findOrFail($id);
-    return view('posts.detail', ['blog' => $blog]);
-});
+// 首頁
+Route::get('/homepage', [BlogController::class, 'index']);
+// 詳情頁
+Route::get('/blogs/{id}', [BlogController::class, 'show']);
 
 
 

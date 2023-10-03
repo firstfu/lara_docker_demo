@@ -1,14 +1,11 @@
-@extends('layout')
+@extends('blog.layout')
 
 
 @section('content')
     {{-- @dd($blogs->toArray())); --}}
     <!-- Banner -->
     <!--
-                                                                                                                                                                                       Note: To show a background image, set the "data-bg" attribute below
-                                                                                                                                                                                       to the full filename of your image. This is used in each section to set
-                                                                                                                                                                                       the background image.
-                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                                                                                                       Note: To show a background image, set the "data-bg" attribute below                                                                                                                                                                        -->
     <section id="banner" class="bg-img" data-bg="banner.jpg">
         <div class="inner">
             <header>
@@ -18,7 +15,6 @@
         <a href="#one" class="more">Learn More</a>
     </section>
 
-    <!-- One -->
 
     @foreach ($blogs as $blog)
         <section id="one" class="wrapper post bg-img" data-bg="{{ $blog->bg_ima }}">
@@ -32,7 +28,7 @@
                         <p>{{ $blog->excerpt }}</p>
                     </div>
                     <footer>
-                        <a href="generic.html" class="button alt">Learn More</a>
+                        <a href="/blogs/{{ $blog->id }}" class="button alt">Learn More</a>
                     </footer>
                 </article>
             </div>
