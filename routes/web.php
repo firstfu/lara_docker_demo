@@ -102,10 +102,15 @@ Route::any('/user/ajaxUserDemo', function (Request $request) {
 
 // 首頁
 Route::get('/homepage', [BlogController::class, 'index']);
+// 創建表單
+Route::get('/blogs', [BlogController::class, 'create']);
+Route::post('/blogs', [BlogController::class, 'store']);
+Route::get('/blogs/{id}/edit', [BlogController::class, 'edit']);
+Route::put('/blogs/{id}', [BlogController::class, 'update']);
 // 詳情頁
 Route::get('/blogs/{id}', [BlogController::class, 'show']);
 
 
 
-
+// ==============其它測試=============
 Route::get('/ajaxDemo', [AjaxDemoController::class, 'index']);
