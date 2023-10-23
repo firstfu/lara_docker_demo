@@ -17,7 +17,7 @@ services:
     env_file:
       - .env.production
     environment:
-      APP_DEBUG: false
+      APP_DEBUG: ${APP_DEBUG}
     depends_on:
         - db
     volumes:
