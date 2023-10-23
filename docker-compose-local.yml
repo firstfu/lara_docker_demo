@@ -42,22 +42,22 @@ services:
   #       - ./:/var/www
   #       - /var/www/vendor
 
-  frontend:
-    build:
-      context: ./
-      dockerfile: Dockerfile.front
-    environment:
-      CHOKIDAR_USEPOLLING: true
-      ENV: local
-    stdin_open: true
-    tty: true
-    volumes:
-      - ./:/app
-      - /app/node_modules
-    ports:
-      - 5178:5178
-    restart: always
-    command: bash -c "npm run dev"
+  # frontend:
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile.front
+  #   environment:
+  #     CHOKIDAR_USEPOLLING: true
+  #     ENV: local
+  #   stdin_open: true
+  #   tty: true
+  #   volumes:
+  #     - ./:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - 5178:5178
+  #   restart: always
+  #   command: bash -c "npm run dev"
 
   db:
     image: mysql:latest

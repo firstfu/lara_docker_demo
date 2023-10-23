@@ -114,3 +114,9 @@ Route::get('/blogs/{id}', [BlogController::class, 'show']);
 
 // ==============其它測試=============
 Route::get('/ajaxDemo', [AjaxDemoController::class, 'index']);
+
+Route::get('/test02', function () {
+
+    dd(env('APP_TYPE'));
+    return 'test02';
+});
