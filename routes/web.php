@@ -117,6 +117,6 @@ Route::get('/ajaxDemo', [AjaxDemoController::class, 'index']);
 
 Route::get('/test02', function () {
 
-    dd(env('APP_TYPE'));
+    dd(env('APP_TYPE'), env('APP_URL'), env('APP_DEBUG'));
     return 'test02';
 });
