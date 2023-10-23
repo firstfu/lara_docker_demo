@@ -9,4 +9,4 @@ docker-compose*
 .gitignore
 .vscode
 
-**/node_modules
+**/vendor
