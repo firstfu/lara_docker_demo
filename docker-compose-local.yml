@@ -14,8 +14,6 @@ services:
     tty: true
     ports:
         - 8210:8000
-    environment:
-      APP_DEBUG: true
     env_file:
       - .env
     depends_on:
@@ -98,8 +96,6 @@ services:
     env_file:
       - .env
     ports:
-      # - 9032:80
-      # - 8000:80
       - 80:80
     volumes:
       - ./:/var/www
