@@ -23,24 +23,24 @@ services:
         - /var/www/vendor
     # command: bash -c "php artisan serve --host=0.0.0.0 --port=8000"
 
-  laraqueue:
-    build:
-      args:
-        user: root
-        uid: 1000
-      context: ./
-      dockerfile: Dockerfile.queue
-    container_name: laraqueue
-    restart: always
-    command: php artisan queue:work
-    depends_on:
-        - app
-        - db
-    env_file:
-      - .env
-    volumes:
-        - ./:/var/www
-        - /var/www/vendor
+  # laraqueue:
+  #   build:
+  #     args:
+  #       user: root
+  #       uid: 1000
+  #     context: ./
+  #     dockerfile: Dockerfile.queue
+  #   container_name: laraqueue
+  #   restart: always
+  #   command: php artisan queue:work
+  #   depends_on:
+  #       - app
+  #       - db
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #       - ./:/var/www
+  #       - /var/www/vendor
 
   frontend:
     build:
@@ -97,8 +97,8 @@ services:
       - .env
     ports:
       # - 9032:80
-      - 8000:80
-      # - 80:80
+      # - 8000:80
+      - 80:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
